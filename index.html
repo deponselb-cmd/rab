@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Template RAB Proyek - DEPONSEL</title>
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --secondary: #f59e0b;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --danger: #dc2626;
+      --success: #16a34a;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      background: linear-gradient(160deg, var(--primary), #0f172a);
+      color: white;
+      padding: 28px 22px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #facc15, #22c55e);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: #0f172a;
+      box-shadow: 0 10px 20px rgba(0,0,0,.18);
+    }
+
+    .brand h1 {
+      font-size: 18px;
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    .brand p {
+      margin: 2px 0 0;
+      color: rgba(255,255,255,.75);
+      font-size: 12px;
+    }
+
+    .nav {
+      display: grid;
+      gap: 8px;
+    }
+
+    .nav a {
+      color: rgba(255,255,255,.88);
+      text-decoration: none;
+      padding: 11px 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      display: block;
+    }
+
+    .nav a:hover {
+      background: rgba(255,255,255,.13);
+    }
+
+    .main {
+      padding: 28px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .title h2 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: -0.5px;
+    }
+
+    .title p {
+      margin: 5px 0 0;
+      color: var(--muted);
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+      border-radius: 12px;
+      padding: 11px 16px;
+      font-weight: 700;
+      color: white;
+      background: var(--primary);
+      box-shadow: 0 6px 16px rgba(15, 118, 110, 0.24);
+    }
+
+    button.secondary {
+      background: #111827;
+      box-shadow: 0 6px 16px rgba(17, 24, 39, 0.16);
+    }
+
+    button.warning {
+      background: var(--secondary);
+      color: #111827;
+      box-shadow: 0 6px 16px rgba(245, 158, 11, 0.2);
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .cards {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-bottom: 22px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+    }
+
+    .metric small {
+      color: var(--muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      font-size: 11px;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 24px;
+    }
+
+    section {
+      margin-bottom: 24px;
+      scroll-margin-top: 20px;
+    }
+
+    section h3 {
+      font-size: 20px;
+      margin: 0 0 14px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 11px 12px;
+      font: inherit;
+      color: var(--text);
+      background: #fff;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 14px;
+      background: white;
+    }
+
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 11px 10px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    th {
+      background: #f8fafc;
+      color: #334155;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+    }
+
+    td input, td select {
+      border-radius: 9px;
+      padding: 8px;
+      font-size: 13px;
+    }
+
+    .right {
+      text-align: right;
+    }
+
+    .total-row td {
+      font-weight: 800;
+      background: #f8fafc;
+    }
+
+    .badge {
+      display: inline-flex;
+      padding: 5px 9px;
+      border-radius: 99px;
+      background: #ecfdf5;
+      color: #047857;
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    .note {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      color: #78350f;
+      padding: 14px 16px;
+      border-radius: 14px;
+      margin-top: 12px;
+    }
+
+    .signature {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 36px;
+      text-align: center;
+    }
+
+    .signature .box {
+      min-height: 130px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .line {
+      border-top: 1px solid #111827;
+      padding-top: 8px;
+      font-weight: 800;
+    }
+
+    .invoice-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 18px;
+      margin-bottom: 18px;
+    }
+
+    .invoice-header h2 {
+      margin: 0;
+      color: var(--primary);
+      font-size: 32px;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .mobile-nav {
+      display: none;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 980px) {
+      .app { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .main { padding: 18px; }
+      .mobile-nav { display: block; }
+      .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .form-grid { grid-template-columns: 1fr; }
+      .topbar { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (max-width: 640px) {
+      .cards { grid-template-columns: 1fr; }
+      table { display: block; overflow-x: auto; white-space: nowrap; }
+      .signature, .invoice-header { grid-template-columns: 1fr; flex-direction: column; }
+    }
+
+    @media print {
+      body { background: white; }
+      .sidebar, .actions, .mobile-nav { display: none !important; }
+      .app { display: block; }
+      .main { padding: 0; }
+      .card {
+        box-shadow: none;
+        border: 1px solid #d1d5db;
+        break-inside: avoid;
+      }
+      section {
+        page-break-inside: avoid;
+      }
+      input, select, textarea {
+        border: 0;
+        padding: 0;
+      }
+      button { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">RAB</div>
+        <div>
+          <h1>Template RAB Proyek</h1>
+          <p>DEPONSEL • Siap Edit</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#dashboard">Dashboard</a>
+        <a href="#data-proyek">Data Proyek</a>
+        <a href="#rab-detail">RAB Detail</a>
+        <a href="#analisa">Analisa Harga Satuan</a>
+        <a href="#rekap">Rekapitulasi</a>
+        <a href="#invoice">Invoice</a>
+        <a href="#jadwal">Jadwal Pelaksanaan</a>
+        <a href="#syarat">Syarat & Ketentuan</a>
+        <a href="#ttd">Tanda Tangan</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <select class="mobile-nav" onchange="location.hash=this.value">
+        <option value="#dashboard">Dashboard</option>
+        <option value="#data-proyek">Data Proyek</option>
+        <option value="#rab-detail">RAB Detail</option>
+        <option value="#rekap">Rekapitulasi</option>
+        <option value="#invoice">Invoice</option>
+        <option value="#jadwal">Jadwal</option>
+      </select>
+
+      <div class="topbar">
+        <div class="title">
+          <h2>Rencana Anggaran Biaya</h2>
+          <p>Template HTML interaktif untuk proposal, invoice, dan rekap biaya proyek.</p>
+        </div>
+        <div class="actions">
+          <button onclick="addRabRow()">+ Tambah Item</button>
+          <button class="warning" onclick="calculateAll()">Hitung Total</button>
+          <button class="secondary" onclick="window.print()">Cetak / PDF</button>
+        </div>
+      </div>
+
+      <section id="dashboard">
+        <div class="grid cards">
+          <div class="card metric">
+            <small>Subtotal</small>
+            <strong id="metricSubtotal">Rp 0</strong>
+          </div>
+          <div class="card metric">
+            <small>PPN</small>
+            <strong id="metricTax">Rp 0</strong>
+          </div>
+          <div class="card metric">
+            <small>Cadangan</small>
+            <strong id="metricReserve">Rp 0</strong>
+          </div>
+          <div class="card metric">
+            <small>Total Akhir</small>
+            <strong id="metricGrand">Rp 0</strong>
+          </div>
+        </div>
+      </section>
+
+      <section id="data-proyek" class="card">
+        <h3>1. Data Umum Proyek</h3>
+        <div class="form-grid">
+          <label>Nama Proyek
+            <input id="projectName" value="Pemasangan CCTV Kantor" />
+          </label>
+          <label>Nomor Dokumen
+            <input value="RAB/001/V/2026" />
+          </label>
+          <label>Tanggal
+            <input type="date" value="2026-05-24" />
+          </label>
+          <label>Lokasi Proyek
+            <input value="Teluk Bintuni, Papua Barat" />
+          </label>
+          <label>Nama Klien / Instansi
+            <input value="Nama Klien" />
+          </label>
+          <label>Penyedia / Kontraktor
+            <input value="DEPONSEL NET" />
+          </label>
+          <label>Waktu Pelaksanaan
+            <input value="14 hari kerja" />
+          </label>
+          <label>Sumber Dana
+            <select>
+              <option>Pribadi</option>
+              <option>Perusahaan</option>
+              <option>Dana Desa</option>
+              <option>APBD</option>
+              <option>Lainnya</option>
+            </select>
+          </label>
+          <label>Status
+            <select>
+              <option>Draft</option>
+              <option>Diajukan</option>
+              <option>Disetujui</option>
+              <option>Selesai</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>2. Ruang Lingkup Pekerjaan</h3>
+        <textarea>1. Survey lokasi dan kebutuhan teknis.
+2. Pengadaan material, perangkat, dan perlengkapan.
+3. Instalasi perangkat sesuai standar pekerjaan.
+4. Konfigurasi sistem dan pengujian fungsi.
+5. Dokumentasi pekerjaan dan serah terima.
+6. Garansi pekerjaan sesuai kesepakatan.</textarea>
+      </section>
+
+      <section id="rab-detail" class="card">
+        <h3>3. RAB Detail</h3>
+        <table id="rabTable">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Kategori</th>
+              <th>Uraian</th>
+              <th>Spesifikasi</th>
+              <th>Volume</th>
+              <th>Satuan</th>
+              <th>Harga Satuan</th>
+              <th>Jumlah</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="rowNo">1</td>
+              <td><select><option>Persiapan</option><option>Material</option><option>Jasa</option><option>Transportasi</option><option>Testing</option></select></td>
+              <td><input value="Survey lokasi" /></td>
+              <td><input value="Survey dan analisa kebutuhan" /></td>
+              <td><input type="number" class="qty" value="1" min="0" /></td>
+              <td><input value="Paket" /></td>
+              <td><input type="number" class="price" value="500000" min="0" /></td>
+              <td class="amount right">Rp 500.000</td>
+            </tr>
+            <tr>
+              <td class="rowNo">2</td>
+              <td><select><option>Material</option><option>Persiapan</option><option>Jasa</option><option>Transportasi</option><option>Testing</option></select></td>
+              <td><input value="Kamera CCTV" /></td>
+              <td><input value="IP Camera 2MP Outdoor" /></td>
+              <td><input type="number" class="qty" value="4" min="0" /></td>
+              <td><input value="Unit" /></td>
+              <td><input type="number" class="price" value="650000" min="0" /></td>
+              <td class="amount right">Rp 2.600.000</td>
+            </tr>
+            <tr>
+              <td class="rowNo">3</td>
+              <td><select><option>Jasa</option><option>Material</option><option>Persiapan</option><option>Transportasi</option><option>Testing</option></select></td>
+              <td><input value="Jasa instalasi" /></td>
+              <td><input value="Pemasangan, konfigurasi, dan testing" /></td>
+              <td><input type="number" class="qty" value="1" min="0" /></td>
+              <td><input value="Paket" /></td>
+              <td><input type="number" class="price" value="1500000" min="0" /></td>
+              <td class="amount right">Rp 1.500.000</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="note">Tips: isi volume dan harga satuan, lalu klik <b>Hitung Total</b>. Gunakan tombol cetak untuk simpan sebagai PDF.</div>
+      </section>
+
+      <section id="analisa" class="card">
+        <h3>4. Analisa Harga Satuan Pekerjaan</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Komponen</th>
+              <th>Koefisien</th>
+              <th>Satuan</th>
+              <th>Harga</th>
+              <th>Jumlah</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Tenaga kerja</td>
+              <td>1</td>
+              <td>OH</td>
+              <td class="right">Rp 250.000</td>
+              <td class="right">Rp 250.000</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Material utama</td>
+              <td>1</td>
+              <td>Unit</td>
+              <td class="right">Rp 650.000</td>
+              <td class="right">Rp 650.000</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Alat bantu & transportasi</td>
+              <td>1</td>
+              <td>Paket</td>
+              <td class="right">Rp 150.000</td>
+              <td class="right">Rp 150.000</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="rekap" class="card">
+        <h3>5. Rekapitulasi RAB</h3>
+        <div class="form-grid" style="margin-bottom:14px;">
+          <label>PPN / Pajak (%)
+            <input type="number" id="taxRate" value="11" min="0" onchange="calculateAll()" />
+          </label>
+          <label>Biaya Cadangan / Tak Terduga (%)
+            <input type="number" id="reserveRate" value="5" min="0" onchange="calculateAll()" />
+          </label>
+          <label>Status Perhitungan
+            <input value="Otomatis berdasarkan RAB Detail" readonly />
+          </label>
+        </div>
+        <table>
+          <tbody>
+            <tr>
+              <td>Subtotal RAB</td>
+              <td class="right" id="subtotalCell">Rp 0</td>
+            </tr>
+            <tr>
+              <td>PPN / Pajak</td>
+              <td class="right" id="taxCell">Rp 0</td>
+            </tr>
+            <tr>
+              <td>Biaya Cadangan / Tak Terduga</td>
+              <td class="right" id="reserveCell">Rp 0</td>
+            </tr>
+            <tr class="total-row">
+              <td>Total Akhir</td>
+              <td class="right" id="grandCell">Rp 0</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="invoice" class="card">
+        <div class="invoice-header">
+          <div>
+            <h2>INVOICE</h2>
+            <div class="small">No: INV/001/V/2026</div>
+          </div>
+          <div class="right">
+            <strong>DEPONSEL NET</strong><br/>
+            <span class="small">Layanan Internet • CCTV • Komputer</span><br/>
+            <span class="small">Teluk Bintuni, Papua Barat</span>
+          </div>
+        </div>
+        <table>
+          <tbody>
+            <tr>
+              <td>Ditagihkan Kepada</td>
+              <td>Nama Klien / Instansi</td>
+            </tr>
+            <tr>
+              <td>Nama Proyek</td>
+              <td id="invoiceProject">Pemasangan CCTV Kantor</td>
+            </tr>
+            <tr>
+              <td>Total Tagihan</td>
+              <td class="right"><span class="badge" id="invoiceTotal">Rp 0</span></td>
+            </tr>
+            <tr>
+              <td>Metode Pembayaran</td>
+              <td>Transfer Bank / Tunai</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="jadwal" class="card">
+        <h3>6. Jadwal Pelaksanaan</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Tahapan</th>
+              <th>Durasi</th>
+              <th>Keterangan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Survey lokasi</td><td>1 hari</td><td>Persiapan awal</td></tr>
+            <tr><td>2</td><td>Pengadaan barang</td><td>2–5 hari</td><td>Menyesuaikan stok</td></tr>
+            <tr><td>3</td><td>Instalasi</td><td>1–7 hari</td><td>Sesuai volume pekerjaan</td></tr>
+            <tr><td>4</td><td>Konfigurasi</td><td>1–2 hari</td><td>Setting sistem</td></tr>
+            <tr><td>5</td><td>Testing & serah terima</td><td>1 hari</td><td>Finalisasi pekerjaan</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="syarat" class="card">
+        <h3>7. Syarat dan Ketentuan</h3>
+        <ol>
+          <li>Harga dapat berubah mengikuti kondisi pasar dan ketersediaan barang.</li>
+          <li>Pekerjaan dimulai setelah persetujuan RAB dan pembayaran uang muka.</li>
+          <li>Perubahan pekerjaan di luar RAB akan dibuatkan addendum biaya.</li>
+          <li>Garansi berlaku sesuai jenis barang dan jasa yang disepakati.</li>
+          <li>Estimasi waktu pelaksanaan menyesuaikan kondisi lapangan.</li>
+        </ol>
+      </section>
+
+      <section id="ttd" class="card">
+        <h3>8. Persetujuan</h3>
+        <div class="signature">
+          <div class="box">
+            <div>Penyedia / Kontraktor</div>
+            <div class="line">DEPONSEL NET</div>
+          </div>
+          <div class="box">
+            <div>Klien / Pemilik Proyek</div>
+            <div class="line">Nama Klien</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const rupiah = (number) => new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0
+    }).format(number || 0);
+
+    function calculateAll() {
+      const rows = document.querySelectorAll('#rabTable tbody tr');
+      let subtotal = 0;
+
+      rows.forEach((row, index) => {
+        row.querySelector('.rowNo').textContent = index + 1;
+        const qty = parseFloat(row.querySelector('.qty').value) || 0;
+        const price = parseFloat(row.querySelector('.price').value) || 0;
+        const amount = qty * price;
+        subtotal += amount;
+        row.querySelector('.amount').textContent = rupiah(amount);
+      });
+
+      const taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
+      const reserveRate = parseFloat(document.getElementById('reserveRate').value) || 0;
+
+      const tax = subtotal * taxRate / 100;
+      const reserve = subtotal * reserveRate / 100;
+      const grand = subtotal + tax + reserve;
+
+      document.getElementById('subtotalCell').textContent = rupiah(subtotal);
+      document.getElementById('taxCell').textContent = rupiah(tax);
+      document.getElementById('reserveCell').textContent = rupiah(reserve);
+      document.getElementById('grandCell').textContent = rupiah(grand);
+
+      document.getElementById('metricSubtotal').textContent = rupiah(subtotal);
+      document.getElementById('metricTax').textContent = rupiah(tax);
+      document.getElementById('metricReserve').textContent = rupiah(reserve);
+      document.getElementById('metricGrand').textContent = rupiah(grand);
+      document.getElementById('invoiceTotal').textContent = rupiah(grand);
+      document.getElementById('invoiceProject').textContent = document.getElementById('projectName').value;
+    }
+
+    function addRabRow() {
+      const tbody = document.querySelector('#rabTable tbody');
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="rowNo"></td>
+        <td><select><option>Material</option><option>Persiapan</option><option>Jasa</option><option>Transportasi</option><option>Testing</option></select></td>
+        <td><input value="Item baru" /></td>
+        <td><input value="Spesifikasi" /></td>
+        <td><input type="number" class="qty" value="1" min="0" /></td>
+        <td><input value="Unit" /></td>
+        <td><input type="number" class="price" value="0" min="0" /></td>
+        <td class="amount right">Rp 0</td>
+      `;
+      tbody.appendChild(tr);
+      tr.querySelectorAll('input, select').forEach(el => el.addEventListener('input', calculateAll));
+      calculateAll();
+    }
+
+    document.querySelectorAll('input, select, textarea').forEach(el => {
+      el.addEventListener('input', calculateAll);
+    });
+
+    calculateAll();
+  </script>
+</body>
+</html>
